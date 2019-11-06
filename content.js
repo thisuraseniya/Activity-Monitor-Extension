@@ -24,13 +24,21 @@ function getURL() {
       }    
     }    
   }
-  console.log(url, paused, video);
-  $.ajax({
-    url:"http://127.0.0.1:5244/tracker/url",
-    method:"POST",
-    data:{url: url, browser: "Browser", paused: paused, video: video},            
-  });    
+  $.ajax({url: "http://127.0.0.1:5244/tracker/isRunning",
+    type: "HEAD",
+    timeout:500,
+    statusCode: {
+      200: function (response) {
+        $.ajax({
+          url:"http://127.0.0.1:5244/tracker/url",
+          method:"POST",
+          data:{url: url, browser: "Browser", paused: paused, video: video},            
+        });   
+      }                
+    }
+  }); 
 }
+
 
 setInterval(function () {
   if(document.hasFocus()){
