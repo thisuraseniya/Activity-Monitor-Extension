@@ -32,7 +32,6 @@ function getURL() {
     statusCode: {
       200: function(running) {
         if (running === "1") {
-          console.log("Sending");
           $.ajax({
             url: "http://127.0.0.1:5244/tracker/url",
             method: "POST",
