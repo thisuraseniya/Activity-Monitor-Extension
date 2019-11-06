@@ -25,15 +25,18 @@ function getURL() {
     }    
   }
   $.ajax({url: "http://127.0.0.1:5244/tracker/isRunning",
-    type: "HEAD",
+    type: "GET",
     timeout:500,
     statusCode: {
-      200: function (response) {
-        $.ajax({
-          url:"http://127.0.0.1:5244/tracker/url",
-          method:"POST",
-          data:{url: url, browser: "Browser", paused: paused, video: video},            
-        });   
+      200: function (running) {
+        if (running === "1" ) {
+          console.log("Sending");
+          $.ajax({
+            url:"http://127.0.0.1:5244/tracker/url",
+            method:"POST",
+            data:{url: url, browser: "Browser", paused: paused, video: video},            
+          });  
+        }         
       }                
     }
   }); 

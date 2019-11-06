@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "URL Grabber for Activity Monitor",
-  "version": "1.0",
+  "version": "1.10",
   "description": "This extension is an add-on for the app Activity Monitor, which is a tool to monitor and analyze a person's PC usage. URL Grabber helps to monitor which websites the user visits.",
   "icons": {
     "48": "icons/am.png"
